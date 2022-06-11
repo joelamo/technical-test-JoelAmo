@@ -1,3 +1,10 @@
-<p>
-  header works!
-</p>
+<div class="menu-bar flex justify-content-between align-items-center w-full h-full">
+  <div class="flex justify-content-start align-content-center align-items-center ">
+    <img src="assets/images/hiberus-logo.jpg" class="logo"/>
+    <h1>Technical Test</h1>
+  </div>
+  <div class="flex align-content-center mr-4">
+    <i type="button" style="font-size: 2rem;" class=" pi pi-user pointer" (click)="menu.toggle($event)"></i>
+    <p-menu #menu [popup]="true" [model]="items"></p-menu>
+  </div>
+</div>
