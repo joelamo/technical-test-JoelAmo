@@ -1,3 +1,94 @@
-<p>
-  login works!
-</p>
+<div class="login-page">
+  <p-card
+    class="flex flex-column justify-content-center align-content-center col-6 h-full mx-auto "
+  >
+    <div>
+      <h2 class="text-center">LOGIN</h2>
+    </div>
+    <form class="mt-5 mx-5" [formGroup]="loginForm">
+      <div class="mx-auto col-6 m-3">
+        <span class="p-float-label">
+          <input
+            class="w-full"
+            id="email"
+            formControlName="email"
+            type="email"
+            pInputText
+            [ngClass]="{'ng-invalid ng-dirty': loginForm.get('email')?.invalid && loginForm.get('email')?.touched }"
+          />
+          <label for="email">Email</label>
+        </span>
+        <div
+          *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched ">
+          <small
+            class="p-error block"
+            *ngIf="loginForm.get('email')?.hasError('required')"
+          >
+            El campo es requerido
+          </small>
+          <small
+            class="p-error block"
+            *ngIf="loginForm.get('email')?.hasError('pattern')"
+          >
+            Debe de escribir un email válido
+          </small>
+        </div>
+      </div>
+      <div class="mx-auto col-6 m-3">
+        <span class="p-float-label">
+          <input
+            class="w-full"
+            id="password"
+            formControlName="password"
+            [ngClass]="{'ng-invalid ng-dirty': loginForm.get('password')?.invalid && loginForm.get('password')?.touched }"
+            type="password"
+            pInputText
+          />
+          <label for="password">Contraseña</label>
+        </span>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched ">
+          <small class="p-error block">
+            El campo es requerido
+          </small>
+        </div>
+      </div>
+    </form>
+    <div class="mb-3 mx-5">
+      <div class="mx-auto col-6 m-3">
+        <div class="field-checkbox flex justify-content-start">
+          <p-checkbox [binary]="true" inputId="rememberMe" [(ngModel)]="rememberMe"> </p-checkbox>
+          <label for="rememberMe">Recuérdame</label>
+        </div>
+      </div>
+    </div>
+  
+      <div class="flex justify-content-center">
+        <button
+          pButton
+          class="p-button-info mb-3 shadow-none"
+          (click)="signIn()"
+        >
+          Iniciar sesión
+        </button>
+      </div>
+    <div class="flex flex-column">
+      <p class="text-center mb-2">¿No tienes cuenta?</p>
+      <p class="text-center mb-2 underline pointer" routerLink="/register">
+        Crear una cuenta
+      </p>
+    </div>
+  </p-card>
+
+  <p-toast key="toast" position="top-center" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+      <div class="flex flex-column" style="flex: 1">
+          <div class="text-center">
+              <i [class]="message.icon" style="font-size: 3rem"></i>
+              <h4>{{message.summary}}</h4>
+              <p>{{message.detail}}</p>
+          </div>
+      </div>
+    </ng-template>
+  </p-toast>
+</div>
+
