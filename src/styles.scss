@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+header {
+    height: 10vh;
+    min-width: 100vw;
+    width: 100vw;
+}
+
+main {
+    margin: auto;
+    width: 90%;
+    min-height: 82vh;
+}
+
+footer {
+    height: 8vh;
+    min-width: 100vw;
+    width: 100vw;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
