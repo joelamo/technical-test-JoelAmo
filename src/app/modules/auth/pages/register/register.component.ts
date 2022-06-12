@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import Toast from 'src/app/modules/auth/models/Toast';
+import Toast from 'src/app/global/models/Toast';
 import UserApiModel from 'src/app/modules/auth/models/UserApiModel';
 import { AuthService } from '../../services/auth.service';
 
