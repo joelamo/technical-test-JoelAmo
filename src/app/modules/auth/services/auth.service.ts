@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GlobalService } from 'src/app/gobal/global.service';
 import User from 'src/app/models/User';
+import UserApiModel from 'src/app/models/UserApiModel';
 
 @Injectable({
   providedIn: 'root',
@@ -21,4 +22,7 @@ export class AuthService {
       sessionStorage.setItem('user', JSON.stringify(user));
   }
 
+  signUp(user: UserApiModel){
+    return this.http.post<any>(`${this.globalService.baseUrl}/auth/sign-up`, user);
+  }
 }

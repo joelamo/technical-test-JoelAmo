@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleSignInError(error: any){
-    const message = {
+    const message: Toast = {
       severity: 'error',
       summary: 'Error!',
       detail: '',
