@@ -1,3 +1,100 @@
-<p>
-  users-list works!
-</p>
+<div class="users-list ">
+    <h1 class="text-center mb-5">Listado de usuarios</h1>
+
+    <p-table [value]="users" dataKey="id" editMode="row" responsiveLayout="scroll" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="col-3 text-center">Nombre</th>
+                <th class="col-3 text-center">Apellido</th>
+                <th class="col-3 text-center">Email</th>
+                <th class="col-3 text-center">Acciones</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="user">
+                <td class="col-3 text-center">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="user.name">
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{user.name}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td class="col-3 text-center">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="user.surname" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{user.surname}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td class="col-3 text-center">
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="email" [(ngModel)]="user.email" required>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{user.email}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td class="col-3 text-center" style="text-align:center">
+                    <button
+                      *ngIf="!editing"
+                      pButton
+                      pRipple
+                      type="button"
+                      pInitEditableRow
+                      icon="pi pi-pencil"
+                      class="p-button-rounded p-button-text">
+                    </button>
+                    <button
+                      *ngIf="!editing"
+                      pButton
+                      pRipple
+                      type="button"
+                      icon="pi pi-trash"
+                      (click)="delete(user.id)"
+                      class="p-button-rounded p-button-danger p-button-text">
+                    </button>
+                    <button
+                      *ngIf="editing"
+                      pButton
+                      pRipple
+                      type="button"
+                      pSaveEditableRow
+                      icon="pi pi-check"
+                      (click)="edit(user)"
+                      class="p-button-rounded p-button-text p-button-success mr-2">
+                    </button>
+                    <button
+                      *ngIf="editing"
+                      pButton
+                      pRipple
+                      type="button"
+                      pCancelEditableRow
+                      icon="pi pi-times"class="p-button-rounded p-button-text p-button-danger">
+                    </button>
+                </td>
+                </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-confirmDialog header="Estas a punto de borrar un usuario" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<p-toast key="toast" position="top-center" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+      <div class="flex flex-column" style="flex: 1">
+          <div class="text-center">
+              <i [class]="message.icon" style="font-size: 3rem"></i>
+              <h4>{{message.summary}}</h4>
+              <p>{{message.detail}}</p>
+          </div>
+      </div>
+    </ng-template>
+  </p-toast>
