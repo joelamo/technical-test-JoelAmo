@@ -10,10 +10,19 @@ import UserApiModel from 'src/app/modules/auth/models/UserApiModel';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private globalService: GlobalService) {}
+  constructor(
+    private http: HttpClient, 
+    private globalService: GlobalService,
+  ) {}
 
   logIn(email: string, password: string): Observable<any> {
     return this.http.post<any>(`${this.globalService.baseUrl}/auth/log-in`, { email, password });
+  }
+
+  logout(){
+    this.globalService.user = null;
+    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
   }
 
   saveUser(user: User, rememberMe: boolean){

@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { EventEmitter, Injectable } from '@angular/core';
 import User from "../models/User";
 
 @Injectable({
   providedIn: 'root',
 })
 export class GlobalService {
-  userSubject: BehaviorSubject<User>;
+  private _user: User | null;
+  userEmitter = new EventEmitter();
   
   baseUrl = 'http://51.38.51.187:5050/api/v1';
   
@@ -18,15 +18,16 @@ export class GlobalService {
       JSON.parse(sessionStorage.getItem('user')!) : 
       null;
 
-    this.userSubject = new BehaviorSubject<User>(user);
+    this._user = user;
   }
 
-  public get user(): User {
-    return this.userSubject.value;
+  public get user(): User | null {
+    return this._user;
   }
 
-  public set user(newUser: User){
-    this.userSubject.next(newUser);
+  public set user(newUser: User | null){
+    this._user = newUser;
+    this.userEmitter.emit(this._user);
   }
 
 
