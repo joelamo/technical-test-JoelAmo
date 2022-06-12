@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { GlobalService } from 'src/app/gobal/global.service';
-import User from 'src/app/models/User';
-import UserApiModel from 'src/app/models/UserApiModel';
+import { GlobalService } from 'src/app/global/services/global.service';
+import User from 'src/app/global/models/User';
+import UserApiModel from 'src/app/modules/auth/models/UserApiModel';
 
 @Injectable({
   providedIn: 'root',

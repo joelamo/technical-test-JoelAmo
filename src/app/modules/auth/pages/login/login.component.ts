@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { GlobalService } from 'src/app/gobal/global.service';
-import Toast from 'src/app/models/Toast';
-import User from 'src/app/models/User';
+import { GlobalService } from 'src/app/global/services/global.service';
+import Toast from 'src/app/modules/auth/models/Toast';
+import User from 'src/app/global/models/User';
 import { UsersService } from 'src/app/modules/users/services/users.service';
 import { AuthService } from '../../services/auth.service';
 
