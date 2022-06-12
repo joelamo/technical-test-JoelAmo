@@ -18,4 +18,12 @@ export class UsersService {
   getUsers():Observable<UsersApiModel>{
     return this.http.get<UsersApiModel>(`${this.globalService.baseUrl}/users`);
   }
+
+  updateUser(user: UserViewModel){
+    return this.http.put(`${this.globalService.baseUrl}/users/${user.id}`, user);
+  }
+
+  deleteUser(id: string){
+    return this.http.delete(`${this.globalService.baseUrl}/users/${id}`);
+  }
 }

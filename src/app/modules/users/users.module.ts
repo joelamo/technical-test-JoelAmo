@@ -10,6 +10,7 @@ import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
 import { RippleModule } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { TableModule } from 'primeng/table';
     ToastModule,
     RippleModule,
     TableModule,
+    ConfirmDialogModule,
   ],
   declarations: [UsersListComponent],
 })
