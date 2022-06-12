@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { GlobalService } from 'src/app/gobal/global.service';
+import Toast from 'src/app/models/Toast';
 import User from 'src/app/models/User';
 import { UsersService } from 'src/app/modules/users/services/users.service';
 import { AuthService } from '../../services/auth.service';
@@ -54,7 +55,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  addMessage(message: {severity: string; summary: string; detail: string; icon: string;}) {
+  addMessage(message: Toast) {
     this.messageService.add({
       key: 'toast',
       severity: message.severity,
