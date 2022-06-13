@@ -2,6 +2,12 @@
     min-height: 82vh;
     padding-top: 5rem;
     margin: 0 auto;
-    width: 80%;
     font-family: var(--font-family);
+}
+
+
+@media (min-width:960px) {
+    .responsive{
+        display: none;
+    }
 }

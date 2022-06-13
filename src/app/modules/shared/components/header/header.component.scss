@@ -3,8 +3,34 @@
     color: white;
     font-family: var(--font-family);
     padding: 1rem;
+
+    &__title{
+        font-size: 1.5rem;
+    }
+
     .logo{
-        width: 15%;
-        margin-right: 2rem;
+        width: 70px;
+        margin-right: 1rem;
+    }
+
+    .user{
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 480px) {
+    .menu-bar{
+        &__title{
+            font-size: 2rem;
+        }
+        &__user {
+            margin-right: 2rem;
+        }
+        .logo{
+            margin-right: 2rem;
+        }
+        .user{
+            font-size: 2rem;
+        }
     }
 }

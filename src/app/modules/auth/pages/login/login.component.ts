@@ -17,7 +17,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = this.formBuilder.group({
     email: [
-      'test1@test1.com',
+      '',
       {
         validators: [
           Validators.required,
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         ],
       },
     ],
-    password: ['test1', Validators.required],
+    password: ['', Validators.required],
   });
 
   rememberMe: boolean = false;

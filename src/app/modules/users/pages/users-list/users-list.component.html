@@ -1,7 +1,7 @@
-<div class="users-list ">
+<div class="users-list xl:col-8 lg:col-10 col-12">
     <h1 class="text-center mb-5">Listado de usuarios</h1>
 
-    <p-table [value]="users" dataKey="id" editMode="row" responsiveLayout="scroll" [paginator]="true" [rows]="10">
+    <p-table [value]="users" dataKey="id" editMode="row" [autoLayout]="true" [responsive]="true" [paginator]="true" [rows]="10" >
         <ng-template pTemplate="header">
             <tr>
                 <th class="col-3 text-center">Nombre</th>
@@ -12,37 +12,40 @@
         </ng-template>
         <ng-template pTemplate="body" let-user let-editing="editing" let-ri="rowIndex">
             <tr [pEditableRow]="user">
-                <td class="col-3 text-center">
+                <td class="col-3 text-center justify-content-center">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
+                            <span class="responsive">Nombre: </span>
                             <input pInputText type="text" [(ngModel)]="user.name">
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{user.name}}
+                            <span class="responsive">Nombre: </span>{{user.name}}
                         </ng-template>
                     </p-cellEditor>
                 </td>
-                <td class="col-3 text-center">
+                <td class="col-3 text-center justify-content-center">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
+                            <span class="responsive">Apellido: </span>
                             <input pInputText type="text" [(ngModel)]="user.surname" required>
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{user.surname}}
+                            <span class="responsive">Apellido: </span>{{user.surname}}
                         </ng-template>
                     </p-cellEditor>
                 </td>
-                <td class="col-3 text-center">
+                <td class="col-3 text-center justify-content-center">
                     <p-cellEditor>
                         <ng-template pTemplate="input">
+                            <span class="responsive">Email: </span>
                             <input pInputText type="email" [(ngModel)]="user.email" required>
                         </ng-template>
                         <ng-template pTemplate="output">
-                            {{user.email}}
+                            <span class="responsive">Email: </span>{{user.email}}
                         </ng-template>
                     </p-cellEditor>
                 </td>
-                <td class="col-3 text-center" style="text-align:center">
+                <td class="col-3 text-center justify-content-center" style="text-align:center">
                     <button
                       *ngIf="!editing"
                       pButton
